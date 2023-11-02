@@ -48,35 +48,39 @@ After running that, go back to `list_ops.py` and add in a print statement at the
     1. The first is to try not to leave any "loose" code out in our file. This means that (with a few specfic exeptions) we want mostly all of our code to be contained in functions. Any "loose" code, function calls, and program logic that is neccessary for the program to run should be wrapped in a `main()` function. 
     + An example of a main function might look like this:
     ```python=
-def clean_name(name):
-    return name.lower().strip() # note that you can chain certain methods as seen here
+    def clean_name(name):
+        return name.lower().strip() # note that you can chain certain methods as seen here
 
-def clean_age(age):
-    while True:
-        try:
-            return int(age)
-        except ValueError:
-            age = input("enter a valid number for age: ")
+    def clean_age(age):
+        while True:
+            try:
+                return int(age)
+            except ValueError:
+                age = input("enter a valid number for age: ")
 
-def create_person_list(first_name, last_name, age):
-    return [first_name, last_name, age] # create a list with preset values as seen here
+    def create_person_list(first_name, last_name, age):
+        return [first_name, last_name, age] # create a list with preset values as seen here
 
-def main():
-    user_first_name = clean_name(input("Enter your first name: "))
-    user_last_name = clean_name(input("Enter your last name: "))
-    user_age = clean_age(input("enter your age: "))
+    def main():
+        user_first_name = clean_name(input("Enter your first name: "))
+        user_last_name = clean_name(input("Enter your last name: "))
+        user_age = clean_age(input("enter your age: "))
 
-    print(f"Person list: {create_person_list(user_first_name, user_last_name, age}"))
-```
+        print(f"Person list: {create_person_list(user_first_name, user_last_name, age}"))
+    ```
     2. Next we can use this line of code:
     ```python=
     if __name__ == "__main__":
         # code that only runs when the specfic file it being called
     ```
     What this does is create a conditional that only renders true when the file is not being imported and is being run directly. Think of it this way:
-        + If you have an `if __name__ == "__main__"` statement in a file called `login.py`:
-            + If you run `login.py` directly (eg `python login.py`), the code inside the if statement will execute
-            + If you import `login.py` to a file called `users.py` the if statement will be false, and the code will not run
+    + If you have an `if __name__ == "__main__"` statement in a file called `login.py`:
+        + If you run `login.py` directly (eg `python login.py`), the code inside the if statement will execute
+        + If you import `login.py` to a file called `users.py` the if statement will be false, and the code will not run
     In order to see this better, try printing out the variable `__name__` in both `main.py` and `list_ops.py` and see what is outputted.
 
 +  <u>The next challenge </u> is to refactor both `main.py` and `list_ops.py` to include a `main()` function and an `if __name__ == "__main__"` statement! *(For `list_ops.py` your `main()` function should simply just have your two print statements)*
+
+---
+
+Before you leave think about what this could possibly mean for all the functions we've been importing up until now: `random`, `math`, `turtle`, etc.
