@@ -3,6 +3,7 @@ def count_fives(l):
 
 def list_to_binary(l):
     return list(map(lambda x: (f'{x:08b}'), l))
+
 def reverse_list(l):
     return l[::-1]
 
